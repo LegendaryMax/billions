@@ -5,7 +5,7 @@ import tkinter as tk
 
 
 class GUI(tk.Tk):
-    app_name = 'Trading terminal'
+    app_name = 'Terminal'
     app_width = 1600
     app_height = 850
     chart_length = 141
