@@ -1,4 +1,6 @@
 import csv
+from datetime import datetime
+
 import yfinance as yf
 import pandas as pd
 
@@ -26,6 +28,11 @@ class YahooAPI():
         with open(name, errors='ignore', encoding='utf-8-sig') as file:
             reader = csv.DictReader(file,
                                     fieldnames=['date', 'open', 'high', 'low', 'close', 'adj-close', 'volume', 'ticker'])
-            data = list(reader)[1::]
-            return data
+
+            data = []
+
+            for i in list(reader)[1::]:
+                data += [[i['date'], float(i['open']), float(i['high']), float(i['low']), float(i['close'])]]
+            df = pd.DataFrame(data[::-1], columns=['timestamp', 'open', 'high', 'low', 'close']).set_index('timestamp')
+            return df
 

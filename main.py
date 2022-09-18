@@ -1,4 +1,10 @@
-from Terminal import api
+from Terminal.api.yf_api import YahooAPI
+import mplfinance as mpf
+
 
 if __name__ == '__main__':
-    print(api.YahooAPI.get_quotes_from_csv('1D-BTCUSDT'))
+    # quotes from text file
+    data = YahooAPI.get_quotes_from_csv('Terminal/quotes/1D-BTCUSDT.csv')
+    print(data)
+    # examples
+    # mpf.plot(data)
